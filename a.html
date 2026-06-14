@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Sahasra Javvadi — Full-Stack Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --white:#ffffff;
+  --off:#fafaf9;
+  --surface:#f4f3f0;
+  --border:#e8e5e0;
+  --border2:#d4d0c8;
+  --text:#111111;
+  --text2:#4a4a46;
+  --text3:#8a8880;
+  --accent:#1a1a1a;
+  --blue:#185FA5;
+  --blue-bg:#EBF3FC;
+  --blue-text:#0C447C;
+  --green-bg:#EBF4E2;
+  --green-text:#2E5A0E;
+  --purple-bg:#EEEDFE;
+  --purple-text:#3C3489;
+  --r:8px;
+  --r2:14px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--white);color:var(--text);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;max-width:860px;margin:0 auto;padding:0 32px}
+
+nav{display:flex;align-items:center;justify-content:space-between;padding:22px 0;border-bottom:1px solid var(--border);margin-bottom:0;position:sticky;top:0;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);z-index:50}
+.logo{font-size:14px;font-weight:600;letter-spacing:-0.01em;color:var(--text)}
+.nav-links{display:flex;gap:28px}
+.nav-links a{font-size:13px;color:var(--text3);text-decoration:none;letter-spacing:0.01em;transition:color 0.15s}
+.nav-links a:hover{color:var(--text)}
+.nav-badge{font-size:11px;font-weight:500;padding:4px 10px;background:var(--green-bg);color:var(--green-text);border-radius:20px;letter-spacing:0.02em}
+
+.hero{padding:80px 0 64px}
+.hero-tag{font-size:12px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--text3);margin-bottom:20px}
+.hero h1{font-family:'DM Serif Display',serif;font-size:52px;font-weight:400;line-height:1.08;letter-spacing:-0.02em;color:var(--text);margin-bottom:24px}
+.hero h1 em{font-style:italic;color:var(--text3)}
+.hero-desc{font-size:16px;color:var(--text2);line-height:1.75;max-width:540px;margin-bottom:36px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.btn-dark{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:500;padding:10px 20px;background:var(--text);color:var(--white);border:none;border-radius:var(--r);cursor:pointer;text-decoration:none;transition:opacity 0.15s;letter-spacing:0.01em}
+.btn-dark:hover{opacity:0.82;text-decoration:none}
+.btn-outline{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:500;padding:9px 18px;background:transparent;color:var(--text2);border:1px solid var(--border2);border-radius:var(--r);cursor:pointer;text-decoration:none;transition:all 0.15s;letter-spacing:0.01em}
+.btn-outline:hover{background:var(--off);border-color:#bbb;text-decoration:none;color:var(--text)}
+.hero-stats{display:flex;gap:0;margin-top:56px;border-top:1px solid var(--border);padding-top:36px}
+.stat{flex:1;padding-right:32px}
+.stat+.stat{border-left:1px solid var(--border);padding-left:32px;padding-right:32px}
+.stat-num{font-family:'DM Serif Display',serif;font-size:32px;font-weight:400;color:var(--text);line-height:1;margin-bottom:6px}
+.stat-label{font-size:12px;color:var(--text3);letter-spacing:0.02em;line-height:1.4}
+
+.divider{height:1px;background:var(--border);margin:0}
+
+.section{padding:60px 0}
+.section-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:36px}
+.section-title{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text3)}
+.section-count{font-size:11px;color:var(--text3)}
+
+.exp-item{display:grid;grid-template-columns:200px 1fr;gap:0 40px;padding:28px 0;border-top:1px solid var(--border)}
+.exp-item:last-child{border-bottom:1px solid var(--border)}
+.exp-left{}
+.exp-company{font-size:13px;font-weight:600;color:var(--text);margin-bottom:3px}
+.exp-period{font-size:12px;color:var(--text3);margin-bottom:10px;line-height:1.4}
+.exp-badge{display:inline-flex;font-size:11px;font-weight:500;padding:3px 9px;background:var(--surface);color:var(--text2);border-radius:4px;border:1px solid var(--border)}
+.exp-right{}
+.exp-role{font-size:15px;font-weight:600;color:var(--text);margin-bottom:14px}
+.exp-list{list-style:none;display:flex;flex-direction:column;gap:8px}
+.exp-list li{font-size:13.5px;color:var(--text2);line-height:1.65;padding-left:16px;position:relative}
+.exp-list li::before{content:'';position:absolute;left:0;top:9px;width:5px;height:1px;background:var(--text3)}
+
+.projects-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden}
+.proj{background:var(--white);padding:28px;display:flex;flex-direction:column;gap:14px;transition:background 0.15s}
+.proj:hover{background:var(--off)}
+.proj-stack{display:flex;flex-wrap:wrap;gap:5px}
+.tag{font-size:11px;font-weight:500;padding:3px 8px;border-radius:4px;letter-spacing:0.01em}
+.tag-blue{background:var(--blue-bg);color:var(--blue-text)}
+.tag-purple{background:var(--purple-bg);color:var(--purple-text)}
+.tag-neutral{background:var(--surface);color:var(--text2);border:1px solid var(--border)}
+.proj-name{font-size:15px;font-weight:600;color:var(--text);line-height:1.3}
+.proj-desc{font-size:13px;color:var(--text2);line-height:1.65;flex:1}
+.proj-highlights{display:flex;flex-direction:column;gap:4px;margin-top:2px}
+.proj-highlight{font-size:12px;color:var(--text3);padding-left:12px;position:relative;line-height:1.5}
+.proj-highlight::before{content:'';position:absolute;left:0;top:8px;width:4px;height:1px;background:var(--text3)}
+.proj-footer{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:14px;border-top:1px solid var(--border)}
+.proj-link{font-size:12px;font-weight:500;color:var(--blue);text-decoration:none;letter-spacing:0.01em}
+.proj-link:hover{text-decoration:underline}
+.proj-type{font-size:11px;color:var(--text3)}
+
+.pub-block{padding:32px;border:1px solid var(--border);border-radius:var(--r2);background:var(--white)}
+.pub-venue{display:inline-flex;font-size:11px;font-weight:500;padding:4px 10px;background:var(--blue-bg);color:var(--blue-text);border-radius:4px;margin-bottom:14px;letter-spacing:0.02em}
+.pub-title{font-size:18px;font-weight:600;color:var(--text);line-height:1.35;margin-bottom:10px}
+.pub-conf{font-size:13px;color:var(--text3);margin-bottom:20px;line-height:1.5}
+.pub-metrics{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.pub-metric{font-size:12px;font-weight:500;padding:5px 12px;border-radius:20px;background:var(--green-bg);color:var(--green-text)}
+.pub-link-row{display:flex;align-items:center;gap:16px}
+.pub-cta{font-size:13px;font-weight:500;color:var(--blue);text-decoration:none}
+.pub-cta:hover{text-decoration:underline}
+.pub-sub{font-size:12px;color:var(--text3)}
+
+.skills-layout{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden}
+.skill-cell{background:var(--white);padding:22px 24px}
+.skill-label{font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text3);margin-bottom:10px}
+.skill-items{display:flex;flex-direction:column;gap:6px}
+.skill-item{font-size:13px;color:var(--text2);line-height:1.4}
+.skill-note{font-size:11px;color:var(--text3);margin-top:4px;font-style:italic}
+
+.cert-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+.cert-pill{font-size:12px;font-weight:500;padding:6px 14px;border:1px solid var(--border);border-radius:20px;color:var(--text2);background:var(--white)}
+
+.contact-section{padding:60px 0 80px}
+.contact-inner{border:1px solid var(--border);border-radius:var(--r2);padding:48px;background:var(--off)}
+.contact-heading{font-family:'DM Serif Display',serif;font-size:32px;font-weight:400;color:var(--text);margin-bottom:12px;letter-spacing:-0.01em}
+.contact-sub{font-size:14px;color:var(--text2);margin-bottom:28px;line-height:1.6;max-width:400px}
+.contact-links{display:flex;gap:10px;flex-wrap:wrap}
+
+@media(max-width:640px){
+  body{padding:0 20px}
+  .hero h1{font-size:36px}
+  .exp-item{grid-template-columns:1fr}
+  .projects-grid{grid-template-columns:1fr}
+  .skills-layout{grid-template-columns:1fr 1fr}
+  .hero-stats{flex-wrap:wrap;gap:20px}
+  .stat+.stat{border-left:none;padding-left:0}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="logo">Sahasra Javvadi</span>
+  <div class="nav-links">
+    <a href="#work">Work</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <span class="nav-badge">Open to Intern roles</span>
+</nav>
+
+<section class="hero">
+  <div class="hero-tag">Full-Stack Engineer &mdash; B.Tech CS &rsquo;26</div>
+  <h1>Building backends<br>that <em>actually</em> ship.</h1>
+  <p class="hero-desc">I&rsquo;m Sahasra &mdash; a final-year CS student at SRM University AP with production engineering experience at Standard Chartered Bank. I build in Node.js, React, PostgreSQL, and Python. I care about correctness under load, not just demos that work once.</p>
+  <div class="hero-actions">
+    <a href="mailto:sahasrajavvadi@gmail.com" class="btn-dark">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+      sahasrajavvadi@gmail.com
+    </a>
+    <a href="https://github.com/sahasrajavvadi" class="btn-outline" target="_blank">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+      GitHub
+    </a>
+    <a href="https://linkedin.com/in/sahasra-javvadi-41b698258" class="btn-outline" target="_blank">LinkedIn</a>
+    <a href="sahasra_roxiler.pdf" class="btn-outline" target="_blank">Resume PDF</a>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">9.28</div>
+      <div class="stat-label">CGPA<br>SRM University AP</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">10+</div>
+      <div class="stat-label">Months production<br>engineering at StanChart</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">4</div>
+      <div class="stat-label">Full-stack projects<br>shipped end-to-end</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">1</div>
+      <div class="stat-label">IEEE publication<br>2025 IConSCEPT</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="section" id="work">
+  <div class="section-header">
+    <span class="section-title">Experience</span>
+  </div>
+
+  <div class="exp-item">
+    <div class="exp-left">
+      <div class="exp-company">Standard Chartered Bank</div>
+      <div class="exp-period">July 2025 &ndash; May 2026<br>Hyderabad, India</div>
+      <span class="exp-badge">Production · Dataiku</span>
+    </div>
+    <div class="exp-right">
+      <div class="exp-role">Data Science Intern</div>
+      <ul class="exp-list">
+        <li>Owned end-to-end backend engineering of a SharePoint automation service handling 100+ concurrent users &mdash; built in Python/Flask with validation, encoding edge-case handling, and concurrency controls; deployed to production on Dataiku with zero post-launch manual intervention.</li>
+        <li>Shipped a multilingual document ingestion pipeline processing 50+ PDFs across languages &mdash; engineered layout-aware table parsing with custom OCR post-processing to hit 92% accuracy, cutting manual processing time by 55% at scale.</li>
+        <li>Designed and productionised a multi-dataset scoring pipeline joining audit plans, risk ratings, QA exceptions, and control logs &mdash; replaced a fully manual country-level audit process with programmatic risk-ranked output across multiple geographies.</li>
+        <li>Debugged production anomaly detection system on live audit datasets, tracing systematic data quality failures that had evaded detection and reducing manual intervention by 40%.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="section" id="projects">
+  <div class="section-header">
+    <span class="section-title">Projects</span>
+    <span class="section-count">4 projects</span>
+  </div>
+
+  <div class="projects-grid">
+    <div class="proj">
+      <div class="proj-stack">
+        <span class="tag tag-blue">Node.js</span>
+        <span class="tag tag-blue">React</span>
+        <span class="tag tag-blue">PostgreSQL</span>
+        <span class="tag tag-neutral">WebSocket</span>
+        <span class="tag tag-neutral">OpenAI API</span>
+      </div>
+      <div class="proj-name">AI-Powered Interview Simulator</div>
+      <div class="proj-desc">Real-time full-stack app with 4 modules &mdash; Voice Interview, Video Analysis, ATS Scanner, MCQ Practice. Engineered 22+ REST endpoints and resolved async race conditions breaking the live feedback loop under concurrent WebSocket streams.</div>
+      <div class="proj-highlights">
+        <div class="proj-highlight">GPT-4o-mini + Whisper + TTS via OpenAI API</div>
+        <div class="proj-highlight">Rate-limiting, retry logic, latency handling under load</div>
+        <div class="proj-highlight">3 difficulty levels with filler-word detection</div>
+      </div>
+      <div class="proj-footer">
+        <a href="https://github.com/sahasrajavvadi/AI-Powered-Interview-Simulator-" class="proj-link" target="_blank">View on GitHub &rarr;</a>
+        <span class="proj-type">Full-stack</span>
+      </div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-stack">
+        <span class="tag tag-blue">Node.js</span>
+        <span class="tag tag-blue">React</span>
+        <span class="tag tag-blue">MongoDB</span>
+        <span class="tag tag-neutral">Express.js</span>
+        <span class="tag tag-neutral">reCAPTCHA</span>
+      </div>
+      <div class="proj-name">Student Counselling Management System</div>
+      <div class="proj-desc">15+ RESTful APIs across a 3-role auth system (Admin, Student, Counselor) on Node.js + MongoDB. Engineered concurrent session handling for 100+ users and debugged auth state drift causing session corruption under concurrent load.</div>
+      <div class="proj-highlights">
+        <div class="proj-highlight">4-state appointment booking lifecycle</div>
+        <div class="proj-highlight">20+ React components, Google reCAPTCHA secured</div>
+        <div class="proj-highlight">Frontend-backend sync bugs resolved under load</div>
+      </div>
+      <div class="proj-footer">
+        <a href="https://github.com/sahasrajavvadi/Student-counselling-system" class="proj-link" target="_blank">View on GitHub &rarr;</a>
+        <span class="proj-type">Full-stack</span>
+      </div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-stack">
+        <span class="tag tag-purple">FastAPI</span>
+        <span class="tag tag-purple">LangChain</span>
+        <span class="tag tag-purple">FAISS</span>
+        <span class="tag tag-neutral">RAG</span>
+        <span class="tag tag-neutral">Gemini API</span>
+      </div>
+      <div class="proj-name">AI Research Synthesizer</div>
+      <div class="proj-desc">End-to-end RAG pipeline (LangChain + FAISS vector store) that ingests research PDFs, chunks and indexes documents, and serves semantically accurate multi-document synthesis. FastAPI backend with async I/O and embedding-based top-k retrieval.</div>
+      <div class="proj-highlights">
+        <div class="proj-highlight">Handles retrieval failures and parsing edge cases gracefully</div>
+        <div class="proj-highlight">Query latency validated under iterative load testing</div>
+      </div>
+      <div class="proj-footer">
+        <a href="https://github.com/sahasrajavvadi/AI-Research-Synthesizer" class="proj-link" target="_blank">View on GitHub &rarr;</a>
+        <span class="proj-type">AI / Backend</span>
+      </div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-stack">
+        <span class="tag tag-purple">PyTorch</span>
+        <span class="tag tag-purple">PubMedBERT</span>
+        <span class="tag tag-purple">DenseNet</span>
+        <span class="tag tag-neutral">NLP</span>
+      </div>
+      <div class="proj-name">Entity-Aware Medical Image Captioning</div>
+      <div class="proj-desc">Multimodal model combining PubMedBERT (NLP) and DenseNet (vision) with entity-aware attention for generating clinically accurate captions from medical images. Explored cross-modal fusion strategies under training constraints.</div>
+      <div class="proj-highlights">
+        <div class="proj-highlight">Cross-modal attention between text and image encoders</div>
+        <div class="proj-highlight">Domain-specific pretraining on medical corpora</div>
+      </div>
+      <div class="proj-footer">
+        <a href="https://github.com/sahasrajavvadi" class="proj-link" target="_blank">View on GitHub &rarr;</a>
+        <span class="proj-type">ML / Research</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="section" id="publication">
+  <div class="section-header">
+    <span class="section-title">Publication</span>
+  </div>
+  <div class="pub-block">
+    <span class="pub-venue">IEEE IConSCEPT 2025</span>
+    <div class="pub-title">Abstractive Text Summarization with Semantic and Contextual Alignment using BART</div>
+    <div class="pub-conf">International Conference on Signal Processing, Computation, Electronics, Power and Telecommunication &mdash; 2025</div>
+    <div class="pub-metrics">
+      <span class="pub-metric">ROUGE-1: 58.33</span>
+      <span class="pub-metric">ROUGE-2: 37.03</span>
+      <span class="pub-metric">BERTScore F1: 86.31</span>
+      <span class="pub-metric">300K+ training articles</span>
+      <span class="pub-metric">Outperformed 3+ baselines</span>
+    </div>
+    <div class="pub-link-row">
+      <a href="https://ieeexplore.ieee.org/abstract/document/11436141" class="pub-cta" target="_blank">Read on IEEE Xplore &rarr;</a>
+      <span class="pub-sub">Fine-tuned BART model for abstractive summarization</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="section" id="skills">
+  <div class="section-header">
+    <span class="section-title">Skills</span>
+  </div>
+  <div class="skills-layout">
+    <div class="skill-cell">
+      <div class="skill-label">Backend & APIs</div>
+      <div class="skill-items">
+        <div class="skill-item">Node.js &amp; Express.js</div>
+        <div class="skill-item">Flask &amp; FastAPI</div>
+        <div class="skill-item">REST API design &amp; debugging</div>
+        <div class="skill-item">WebSocket (real-time)</div>
+        <div class="skill-item" style="color:var(--text3);font-size:12px;font-style:italic;margin-top:4px">NestJS &mdash; actively upskilling</div>
+      </div>
+    </div>
+    <div class="skill-cell">
+      <div class="skill-label">Databases</div>
+      <div class="skill-items">
+        <div class="skill-item">PostgreSQL</div>
+        <div class="skill-item">MySQL</div>
+        <div class="skill-item">MongoDB</div>
+      </div>
+    </div>
+    <div class="skill-cell">
+      <div class="skill-label">Frontend</div>
+      <div class="skill-items">
+        <div class="skill-item">React.js</div>
+        <div class="skill-item">HTML &amp; CSS</div>
+        <div class="skill-item">JavaScript (ES6+)</div>
+      </div>
+    </div>
+    <div class="skill-cell">
+      <div class="skill-label">Languages</div>
+      <div class="skill-items">
+        <div class="skill-item">Python</div>
+        <div class="skill-item">JavaScript</div>
+        <div class="skill-item">SQL</div>
+        <div class="skill-item">C++</div>
+      </div>
+    </div>
+    <div class="skill-cell">
+      <div class="skill-label">AI & ML</div>
+      <div class="skill-items">
+        <div class="skill-item">LangChain &amp; FAISS</div>
+        <div class="skill-item">RAG pipelines</div>
+        <div class="skill-item">PyTorch</div>
+        <div class="skill-item">PaddleOCR</div>
+        <div class="skill-item">OpenAI &amp; Gemini APIs</div>
+      </div>
+    </div>
+    <div class="skill-cell">
+      <div class="skill-label">Infrastructure</div>
+      <div class="skill-items">
+        <div class="skill-item">Docker &amp; Git</div>
+        <div class="skill-item">Dataiku (production)</div>
+        <div class="skill-item">AWS (basics)</div>
+        <div class="skill-item">Data Structures &amp; Algorithms</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cert-row">
+    <span class="cert-pill">Building Language Models on AWS</span>
+    <span class="cert-pill">MongoDB Associate Developer</span>
+    <span class="cert-pill">Google GenAI Fundamentals</span>
+    <span class="cert-pill">Microsoft Career Essentials in Data Analytics</span>
+  </div>
+</section>
+
+<section class="contact-section" id="contact">
+  <div class="contact-inner">
+    <div class="contact-heading">Let&rsquo;s work together.</div>
+    <p class="contact-sub">I&rsquo;m open to Full-Stack Intern roles in Pune &mdash; 6 months, available immediately. If you&rsquo;re at Roxiler or anywhere building serious backend systems, I&rsquo;d love to talk.</p>
+    <div class="contact-links">
+      <a href="mailto:sahasrajavvadi@gmail.com" class="btn-dark">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        Email me
+      </a>
+      <a href="https://linkedin.com/in/sahasra-javvadi-41b698258" class="btn-outline" target="_blank">LinkedIn</a>
+      <a href="https://github.com/sahasrajavvadi" class="btn-outline" target="_blank">GitHub</a>
+      <a href="sahasra_roxiler.pdf" class="btn-outline">Download Resume</a>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
